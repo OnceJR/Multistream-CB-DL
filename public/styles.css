@@ -1,0 +1,77 @@
+:root{
+  --bg:#0b0f14;
+  --panel:#111822;
+  --muted:#9aa3af;
+  --text:#e5e7eb;
+  --accent:#3b82f6;
+  --danger:#ef4444;
+  --ok:#10b981;
+  --warn:#f59e0b;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --radius:16px;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; padding:24px;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  background:linear-gradient(180deg,#0b0f14,#0a0d12);
+  color:var(--text);
+}
+header{margin-bottom:16px}
+h1{margin:0 0 6px 0; font-weight:700; font-size:28px}
+.subtitle{margin:0; color:var(--muted)}
+.panel{
+  background:var(--panel);
+  border:1px solid #1f2937;
+  border-radius:var(--radius);
+  padding:16px;
+  margin-bottom:16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.25);
+}
+.row{display:flex; gap:8px}
+input{
+  flex:1; padding:12px 14px;
+  background:#0e141c;
+  border:1px solid #1f2937;
+  border-radius:10px;
+  color:var(--text)
+}
+button{
+  padding:12px 14px; border-radius:10px; border:1px solid #1f2937;
+  background:linear-gradient(180deg,#18283a,#142234);
+  color:var(--text); cursor:pointer;
+}
+button:hover{filter:brightness(1.1)}
+button.danger{background:linear-gradient(180deg,#3a1820,#341422); border-color:#3a1820}
+button.secondary{background:#0d1520}
+small.muted, .muted{color:var(--muted)}
+
+.table-wrap{overflow:auto}
+table{width:100%; border-collapse:collapse}
+th,td{padding:10px; border-bottom:1px solid #1f2937; vertical-align:top;}
+td .mono{font-family:var(--mono)}
+td.actions{display:flex; gap:6px}
+.state{font-weight:600}
+.state.RECORDING{color:var(--ok)}
+.state.STARTING{color:var(--warn)}
+.state.REMUXING{color:var(--warn)}
+.state.ERROR{color:var(--danger)}
+
+.mono{font-family:var(--mono); font-size:12px; word-break:break-all}
+
+#files{display:flex; flex-wrap:wrap; gap:8px}
+.file-card{
+  background:#0e141c; border:1px solid #1f2937; border-radius:12px;
+  padding:10px; width:320px;
+}
+.file-card .name{font-family:var(--mono); font-size:12px}
+.file-card a{color:var(--accent); text-decoration:none}
+
+.modal{position:fixed; inset:0; background:rgba(0,0,0,.5); display:flex; align-items:center; justify-content:center}
+.modal.hidden{display:none}
+.modal-content{
+  background:#0d1520; border:1px solid #1f2937; border-radius:14px; width:90%; max-width:900px; max-height:80vh; overflow:auto;
+}
+.modal-header{display:flex; justify-content:space-between; align-items:center; padding:12px; border-bottom:1px solid #1f2937}
+#logText{margin:0; padding:12px; font-family:var(--mono); font-size:12px; white-space:pre-wrap}

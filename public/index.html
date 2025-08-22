@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Grabador Multistream — Chaturbate (Web)</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Grabador Multistream — Chaturbate</h1>
+      <p class="subtitle">UI web + backend Node (yt-dlp + ffmpeg)</p>
+    </header>
+
+    <section class="panel">
+      <div class="row">
+        <input id="input" placeholder="URL o nombre de canal (ej: parisbabyxox)" />
+        <!-- NUEVO: minutos de corte -->
+        <input id="cutMin" type="number" min="0" placeholder="Corte cada (min) [0=sin corte]" style="width:220px" />
+        <!-- NUEVO: selector de calidad -->
+        <select id="format">
+          <option value="">Calidad automática</option>
+          <option value="best[height<=1080]">≤1080p</option>
+          <option value="best[height<=720]">≤720p</option>
+          <option value="best[height<=480]">≤480p</option>
+        </select>
+        <button id="btnStart">Iniciar</button>
+      </div>
+      <small class="muted">
+        Consejo: podés pegar <code>https://chaturbate.com/&lt;canal&gt;/</code> o solo el nombre del canal.
+      </small>
+    </section>
+
+    <section class="panel">
+      <h2>Grabaciones en curso</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Canal</th>
+              <th>Estado</th>
+              <th>Duración</th>
+              <th>Tamaño</th>
+              <!-- NUEVO -->
+              <th>Velocidad</th>
+              <th>Bitrate</th>
+              <th>Archivo actual</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="jobsTbody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Archivos finalizados</h2>
+      <div id="files"></div>
+    </section>
+
+    <template id="rowTpl">
+      <tr>
+        <td class="mono id"></td>
+        <td class="mono channel"></td>
+        <td class="state"></td>
+        <td class="elapsed mono"></td>
+        <td class="size mono"></td>
+        <!-- NUEVO -->
+        <td class="speed mono"></td>
+        <td class="bitrate mono"></td>
+        <td class="mono file"></td>
+        <td class="actions"></td>
+      </tr>
+    </template>
+
+    <div id="logModal" class="modal hidden">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Logs</h3>
+          <button id="closeLog">✕</button>
+        </div>
+        <pre id="logText"></pre>
+      </div>
+    </div>
+
+    <footer>
+      <small class="muted">Usar solo con permiso y respetando ToS. Hecho con ❤️</small>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
